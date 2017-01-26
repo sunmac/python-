@@ -1,0 +1,68 @@
+ # -*- coding: cp936 -*-
+class tree(object):
+    def __init__(self):
+        self.root=node()
+    def add(self,num,root1):
+     #   print root1.elem
+        if root1.elem==-1:
+            root1.elem=num
+           # print root1.elem
+            root1.rchild=node()
+            root1.lchild=node()
+            return
+        else:
+            if root1.rchild!=None:
+                
+                self.add(num,root1.rchild)
+                return
+            elif root1.lchild!=None:
+                
+                self.add(num,root1.lchild)
+                return
+
+    def printtree(self,a):
+        if a.elem!=-1:
+            print a.elem
+        if a.rchild!=None:
+            self.printtree(a.rchild)
+        if a.lchild!=None:
+            self.printtree(a.lchild)
+        return
+    def searchtree(self,root1,key):
+        if root1.elem==key:
+            print key,r"搜索到"
+        else:
+            if root1.rchild!=None:
+                self.searchtree(root1.rchild,key)
+            if root1.lchild!=None:
+                self.searchtree(root1.lchild,key)
+    def lterativetreesearch(self,root1,key):
+        while root1.elem!=-1 and root1.elem!=key:
+            if root1.elem>key:
+                root1=root1.rchild
+            else:
+                root1=root1.lchild
+                
+        return key
+
+class node(object):
+    def __init__(self,elem=-1,lchild=None,rchild=None):
+        self.elem=elem
+        self.lchild = lchild
+        self.rchild = rchild  
+    
+
+
+a=tree()
+#print type(a.root),a.root.elem
+a.add(5,a.root)
+a.add(6,a.root)
+a.add(7,a.root)
+a.add(9,a.root)
+a.add(8,a.root)
+a.add(10,a.root)
+
+print 
+a.printtree(a.root)
+a.searchtree(a.root,10)
+print '123',a.lterativetreesearch(a.root,8)
